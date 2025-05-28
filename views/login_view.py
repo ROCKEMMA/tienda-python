@@ -33,7 +33,13 @@ def cargar_login(ventana):
     def funcion_boton():
         correo = entrada_correo.get()
         cotrasenna = entrada_contrasenna.get()
-        print(conectar(f"SELECT * FROM usuario WHERE correo = '{correo}'"))
+        consultar_usuario = conectar(f"SELECT * FROM usuario WHERE correo = '{correo}' AND contrasenna = {contrasenna}")
+
+        if len(consultar_usuario) != 0:
+            print("Usuario activo")
+        else:
+            print("Datos incorrectos")
+        
         
     
     boton = tk.Button(login_panel, text="Continuar", command=funcion_boton)
